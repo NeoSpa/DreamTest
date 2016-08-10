@@ -20,4 +20,3 @@ function FixedUpdate () {
 		Debug.DrawLine(player.transform.position, camPosition[positionIndex].transform.position);
 	}
 }
-

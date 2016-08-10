@@ -10,6 +10,7 @@ var jumpSound : AudioClip;
 var initialAudioPitch : float = 0.9;
 var audioSourceCoin : AudioSource;
 var audioSource : AudioSource;
+var room : GameObject;
 
 function _isGrounded() : boolean {
 	var hit : RaycastHit;
@@ -18,7 +19,7 @@ function _isGrounded() : boolean {
     if (Physics.Raycast(transform.position, -Vector3.up, hit)) {
          distanceToGround = hit.distance;
 
-         if(distanceToGround <= 1) 
+         if(distanceToGround <= 0.8) 
          	return true;
     }
 
@@ -31,19 +32,15 @@ function Start() {
 	SetCountText();
 	winText.text = '';
 	audioSourceCoin.pitch = initialAudioPitch;
+	room = GameObject.FindGameObjectsWithTag('Room')[0];
 }
 
 function FixedUpdate() {
 	var moveHorizontal : float = Input.GetAxis('Horizontal');
 	var moveVertical : float = Input.GetAxis('Vertical');
 	var movement : Vector3 = new Vector3(moveHorizontal, 0.0f, moveVertical);
-
-	rb.AddForce(movement * speed);
-}
-
-function Update() {
-	var up : Vector3 = new Vector3(0.0f, 46f, 0.0f);
-	var down : Vector3 = new Vector3(0.0f, -8f, 0.0f);
+	var up : Vector3 = new Vector3(0.0f, 65f, 0.0f);
+	var down : Vector3 = new Vector3(0.0f, -2f, 0.0f);
 
 	if(_isGrounded() && Input.GetAxis('Jump') && rb.velocity.y < 10) {
 		rb.AddForce(up * speed);
@@ -52,6 +49,16 @@ function Update() {
 	else {
 		rb.AddForce(down * speed);
 	}
+
+	if(Input.GetAxis('Fire1')) {
+		Debug.Log('DOWN');
+	}
+
+	if(Input.GetAxis('Fire3')) {
+		Debug.Log('UP');
+	}
+
+	rb.AddForce(movement * speed);
 }
 
 function OnTriggerEnter(other : Collider) {
@@ -71,6 +78,13 @@ function OnTriggerEnter(other : Collider) {
 
 	if(other.gameObject.CompareTag('Death Stuff'))
 		transform.position = new Vector3(0,10,0);
+
+	if	(other.gameObject.CompareTag('UpDown Platform'))
+		transform.parent = other.transform;
+}
+
+function OnTriggerExit () {
+	transform.parent = null;
 }
 
 function SetCountText() {
@@ -81,4 +95,3 @@ function SetCountText() {
 		countText.text = '';
 	}
 }
-

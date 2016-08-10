@@ -47,8 +47,11 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\CameraController.js" />
      <Compile Include="Assets\Scripts\CameraPositionController.js" />
+     <Compile Include="Assets\Scripts\CameraSwitcherController.js" />
+     <Compile Include="Assets\Scripts\CameraSwitcherController.js.js" />
      <Compile Include="Assets\Scripts\PlayerController.js" />
      <Compile Include="Assets\Scripts\Rotator.js" />
+     <Compile Include="Assets\Scripts\UpDown.js" />
  <Reference Include="UnityEngine.Networking">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
