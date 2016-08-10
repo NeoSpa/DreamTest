@@ -48,7 +48,6 @@
      <Compile Include="Assets\Scripts\CameraController.js" />
      <Compile Include="Assets\Scripts\CameraPositionController.js" />
      <Compile Include="Assets\Scripts\CameraSwitcherController.js" />
-     <Compile Include="Assets\Scripts\CameraSwitcherController.js.js" />
      <Compile Include="Assets\Scripts\PlayerController.js" />
      <Compile Include="Assets\Scripts\Rotator.js" />
      <Compile Include="Assets\Scripts\UpDown.js" />
